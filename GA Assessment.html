@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Be — GA Assessment</title>
+<link rel="stylesheet" href="styles.css">
+<style>doc-page:not(:defined){visibility:hidden}
+body{font-family:var(--font-sans);color:var(--text-body);font-size:12pt;line-height:1.55}
+h1{font-family:var(--font-display);font-size:26pt;font-weight:500;margin:0 0 4px}
+h2{font-family:var(--font-display);font-size:16pt;font-weight:600;margin:26px 0 8px;break-after:avoid}
+h3{font-size:12pt;font-weight:600;margin:16px 0 4px;break-after:avoid}
+p{margin:0 0 9px}ol,ul{margin:0 0 9px;padding-left:22px}li{margin:0 0 5px}
+a{color:var(--honey-700)}a:hover{color:var(--ink-900)}
+.sub{color:var(--text-muted);margin:0 0 16px}
+code,.k{font-family:var(--font-mono);font-size:10pt;background:var(--surface-sunken);border:1px solid var(--border-subtle);border-radius:4px;padding:1px 5px}
+.tip{background:var(--surface-tint);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:10px 14px;margin:10px 0;font-size:11pt;color:var(--ink-700);break-inside:avoid}
+.mono{font-family:var(--font-mono);font-size:10pt;color:var(--text-muted)}
+table{width:100%;border-collapse:collapse;font-size:10.5pt;margin:6px 0 12px;break-inside:avoid}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--border-subtle)}th{font-weight:600;font-size:10pt;color:var(--text-muted)}
+.s{display:inline-block;font-family:var(--font-mono);font-size:9.5pt;padding:1px 8px;border-radius:999px;border:1px solid var(--border-strong);white-space:nowrap}
+.ready{background:#E7EDE2;color:var(--meadow-700);border-color:var(--meadow-300)}.fort{background:var(--honey-100);color:var(--honey-700);border-color:var(--honey-300)}.gap{background:var(--nectar-100);color:var(--ink-700)}.dec{background:#F3DAD4;color:var(--clay-600);border-color:#E0A899}
+.cols{columns:2;column-gap:28px}.cols li{break-inside:avoid}
+</style></head><body>
+<doc-page>
+<h1>Be — GA Assessment</h1>
+<p class="sub">Full-source audit for general availability: what the system can do today, what this revision fortified, and where it can grow. Version <span class="k">1.0.0-rc.1</span> · <span class="mono">1 September 2026</span></p>
+<div class="tip"><strong>Scope.</strong> Every folder in the project: tokens, components, guidelines, both UI kits, the PWA build, sealed files, guides, and research. "GA" is read as <em>general availability</em> — ready for the public, not just a demo. The <code>openclawseed</code> folder from the earlier thread isn't attached here; its consent ethos is already folded into the readme and remains the standard this audit measures against.</div>
+
+<h2>1 · Verdict</h2>
+<p><strong>Ready for GA as a web app and installable PWA, with one release step (HTTPS hosting) and two decisions (license, contact line).</strong> The circle (Hive) ships honestly labeled as a sample; a real circle needs the backend described in §5. The brand, tokens, components, research grounding, and accessibility foundations are production-grade now.</p>
+<table>
+<tr><th style="width:24%">Area</th><th style="width:18%">Status</th><th>Notes</th></tr>
+<tr><td>Brand &amp; tokens</td><td><span class="s ready">ready</span></td><td>103 tokens; warm paper / honey / meadow palette; AA contrast throughout. Fonts load from Google's CDN in the workshop and are sealed into the offline builds; all three families are Open Font License, so self-hosting is permitted whenever wanted.</td></tr>
+<tr><td>Components (14)</td><td><span class="s fort">fortified</span></td><td>Tabs: roving focus, Home/End, ids for tab–panel pairing. Dialog: focus moves in, stays in (Tab wraps), returns to the opener; titled for screen readers.</td></tr>
+<tr><td>App — Today · Hive · You · Settle</td><td><span class="s fort">fortified</span></td><td>Versioned on-device store with migration and validation; answers keyed by day (fixes a cycle bug); even finding rotation; error boundary; learning card, export, and forget surfaced; honest circle and sync; fills phone screens.</td></tr>
+<tr><td>Installable build (pwa/)</td><td><span class="s fort">fortified</span></td><td>Service worker v2: offline-first with quiet background refresh, same-origin only, shell fallback for navigations only. Manifest completed; privacy page added and precached.</td></tr>
+<tr><td>Marketing site</td><td><span class="s ready">ready (proposal)</span></td><td>Viewport meta added; dead "Field notes" link retired. Copy cites real studies — verify wording against the papers before campaigns.</td></tr>
+<tr><td>Research &amp; guides</td><td><span class="s ready">ready</span></td><td>10 primary sources with caveats; Logia Ledger; Creator Ledger; Client Guide. Cadence for re-verification is a §6 decision.</td></tr>
+<tr><td>Accessibility</td><td><span class="s ready">ready</span></td><td>AA contrast, focus rings, 44px targets, reduced-motion, prefers-contrast, semantic roles, cognition rules. Remaining: a formal WCAG 2.2 audit with assistive-technology users.</td></tr>
+<tr><td>Privacy &amp; consent</td><td><span class="s fort">fortified</span></td><td>Everything off by default; nothing leaves without a switch; plain-words privacy page; one-ask forget; portable counts.</td></tr>
+<tr><td>Release operations</td><td><span class="s gap">gaps</span></td><td>No license file, no contact line, no automated tests, development React + in-browser transpiling, no CSP headers. None block a soft GA; all are listed in §7.</td></tr>
+</table>
+
+<h2>2 · Capabilities — what the source can do today</h2>
+<h3>Design system</h3>
+<ul class="cols">
+<li>Drop-in tokens via one stylesheet: color, type scale, spacing, radius, shadow, motion, a11y.</li>
+<li>14 React components in one precompiled bundle; no build step to consume.</li>
+<li>Specimen cards for every foundation, brand principle, and research claim.</li>
+<li>Agent-ready: <code>SKILL.md</code> + <code>readme.md</code> let Claude Code build on-brand.</li>
+<li>Logo set in three variants plus comb pattern, all vector.</li>
+<li>Voice rules precise enough to lint copy against (sentence case, no hype, one metaphor).</li>
+</ul>
+<h3>The app</h3>
+<ul class="cols">
+<li>One cited finding per day, rotating evenly through eight; "why we trust it" with caveats.</li>
+<li>Try / rest / change my mind — keyed to the day, kept on-device.</li>
+<li>Settle: acknowledge → comprehend → measure → manage, sized to the charge.</li>
+<li>Learning beside the person: plain counts per finding and charges met; days noted.</li>
+<li>Take my counts with me — a text file of arithmetic; nothing else exists.</li>
+<li>Ask Be to forget everything — one plain confirmation, honored instantly.</li>
+<li>Consent switches all off by default; quiet evenings on by default (an interruption is the thing that needs consent).</li>
+<li>Circle view that reflects your own sharing switch truthfully.</li>
+<li>Works with no network, from a double-click or as an installed app on iOS, Android, macOS, Windows.</li>
+<li>Recovers from a render fault without losing state; tells you when a window can't remember.</li>
+</ul>
+
+<h2>3 · Fortifications in this revision</h2>
+<ul>
+<li><strong>Day-keyed answers.</strong> Answers were keyed by finding, so after one 8-day cycle every morning already looked answered. Now keyed by date; "change my mind" also retracts that day's count.</li>
+<li><strong>Even rotation.</strong> Finding choice used day-of-month, repeating on the 1st/9th/17th/25th and resetting monthly; now a running day count.</li>
+<li><strong>Store v2.</strong> <code>app-store.js</code>: schema validation, migration from v1 (keeps switches and counts), capped log, safe writes, a visible notice when storage is unavailable, forget and export.</li>
+<li><strong>Phone fit.</strong> Viewport meta was missing — the installed app rendered at desktop width. The frame now fills small screens edge to edge with safe-area padding.</li>
+<li><strong>Honesty fixes.</strong> "Catch up with my circle" previously claimed your circle knew you were well even with sharing off. The circle is now labeled a sample, includes you only when sharing is on, and states exactly what leaves.</li>
+<li><strong>Learning surfaced.</strong> The readme promised a "What Be is learning — beside you" card; the code held the counts but showed nothing. The card now exists, following the four rules.</li>
+<li><strong>Time to read.</strong> Toasts stay 6 seconds and pause while hovered or focused (were 3.2 s).</li>
+<li><strong>Component a11y.</strong> Tabs and Dialog as in §1.</li>
+<li><strong>PWA.</strong> Cache-first with background refresh so updates arrive on the next open; cross-origin requests untouched; only navigations fall back to the shell; manifest <code>id</code>, <code>lang</code>, categories, split icon purposes; <code>privacy.html</code>; color-scheme and no-referrer metas.</li>
+<li><strong>Wording reconciled.</strong> Forgetting is "one plain ask" (a confirmation is the in-the-moment ask the consent principles require; it also prevents accidental loss).</li>
+</ul>
+
+<h2>4 · Production potentials</h2>
+<ul>
+<li><strong>Consumer app</strong> — the PWA today; native wrappers (Capacitor for stores, Tauri for desktop) reuse the same folder unchanged.</li>
+<li><strong>Circles for rooms</strong> — workplaces, classrooms, clinics' waiting rooms, recovery groups: a shared morning finding and a Settle practice, no scores. Non-medical by design; the Charge protocol is the differentiator.</li>
+<li><strong>Design system as product</strong> — a consent-first, common-congruency UI kit is rare; wellness organizations could license or fork it (decide the license first).</li>
+<li><strong>Research loop</strong> — with a backend, opt-in blended counts (differential-privacy lineage) could tell partner researchers which framings people actually try, feeding the findings editorial cycle.</li>
+<li><strong>Logia as curriculum</strong> — the ledger of fields, definitions, and verified findings is a teaching resource in its own right.</li>
+</ul>
+
+<h2>5 · Trajectories</h2>
+<h3>Seed — next 2–4 weeks · GA on the web</h3>
+<ol>
+<li>Host <code>pwa/</code> on any static HTTPS host; confirm install on iPhone, Android, Mac, Windows.</li>
+<li>Choose a license (see §7) and fill the contact line in <code>pwa/privacy.html</code>.</li>
+<li>Invite a first circle by link; collect experience through the guides' feedback loop, not telemetry.</li>
+<li>Assistive-technology pass: one screen-reader user, one switch-access user, one low-vision user.</li>
+</ol>
+<h3>Comb — 1–6 months · a real circle, still consent-first</h3>
+<ol>
+<li>Backend for circles: device-generated keys, invite codes, no accounts or emails; the server stores only per-day try/rest counts per circle, released only above a minimum circle size.</li>
+<li>Morning note as an opt-in Web Push, honoring the quiet-evenings switch; the existing switches become live.</li>
+<li>Build step: precompile JSX and use production React (removes in-browser Babel, roughly 2 MB and a second of startup); self-host the fonts (OFL).</li>
+<li>Night paper: a dark palette that stays warm; <code>prefers-color-scheme</code>.</li>
+<li>Findings editorial: a second reviewer per finding, a re-verification date, and a place to retire a finding when evidence changes.</li>
+<li>Localization: the copy is compact and plain — translate the voice rules before the strings.</li>
+</ol>
+<h3>Hive — 6–18 months · the loop closes</h3>
+<ol>
+<li>Aggregate, anonymized counts flow back to the research layer; publish what was learned in the same plain voice.</li>
+<li>Store distribution via wrappers; privacy labels are simple because the data is.</li>
+<li>Circle types for rooms (§4) with facilitator guides derived from the Client Guide.</li>
+<li>Settle grows from evidence: e.g. paced-breathing variants, movement prompts, all cited and caveated.</li>
+</ol>
+
+<h2>6 · Risks — stated plainly</h2>
+<ul>
+<li><strong>Medical boundary.</strong> Be offers research reminders, not advice. Keep the disclaimer in the app and guides; never add symptom tracking or diagnostic language.</li>
+<li><strong>Evidence drift.</strong> The breath finding is early evidence (~100 people) and the hug finding is correlational — both are labeled; keep labels when copy is edited.</li>
+<li><strong>Storage eviction.</strong> Browsers may clear site data for rarely used, uninstalled sites (Safari after 7 days of non-use). Installing the app avoids it; "Take my counts with me" is the safety net.</li>
+<li><strong>Update lag.</strong> Cache-first means a new version appears on the second open after a release. Bump <code>sw.js</code>'s cache name on every re-seal.</li>
+<li><strong>Circle re-identification.</strong> Small circles make "1 of 3 resting" identifying. The backend must hold counts below a minimum circle size (suggest 5) and never expose per-person status by default.</li>
+<li><strong>Larger text.</strong> Implemented with CSS <code>zoom</code>; works in current browsers (Firefox 126+). A rem-based scale is the durable path.</li>
+</ul>
+
+<h2>7 · Decisions needed from the founder</h2>
+<ul>
+<li>License for the design system and app (e.g. open license vs. proprietary). Nothing ships legally clean without one.</li>
+<li>Contact line for the privacy page and store listings.</li>
+<li>Hosting: who runs the static host and, later, the circle service.</li>
+<li>Re-verification cadence for findings (suggest every 12 months, or when a cited paper is retracted or superseded).</li>
+</ul>
+
+<h2>8 · GA checklist</h2>
+<ul class="cols">
+<li>✓ Offline-capable single file</li>
+<li>✓ Installable PWA with icons</li>
+<li>✓ Versioned, validated local store</li>
+<li>✓ Forget and export</li>
+<li>✓ Privacy in plain words</li>
+<li>✓ Error boundary</li>
+<li>✓ Mobile viewport and safe areas</li>
+<li>✓ Keyboard paths for tabs and dialogs</li>
+<li>✓ Reduced motion, high contrast</li>
+<li>✓ Every claim cited with caveat</li>
+<li>○ HTTPS host chosen</li>
+<li>○ License file</li>
+<li>○ Contact line</li>
+<li>○ Assistive-technology pass</li>
+<li>○ Production build step</li>
+<li>○ Circle backend (Comb)</li>
+</ul>
+<p class="mono">Files touched this revision are listed in CHANGELOG.md. Companion documents: readme.md · INSTALL.md · Creator Ledger · Client Guide · Logia Ledger.</p>
+</doc-page>
+<script src="doc-page.js"></script>
+</body></html>

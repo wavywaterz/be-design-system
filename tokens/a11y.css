@@ -1,0 +1,6 @@
+/* Accessibility foundations */
+:where(button,a,input,select,textarea,summary,[tabindex]):focus-visible{outline:none;box-shadow:0 0 0 2px var(--surface-page),0 0 0 4.5px var(--honey-600)}
+input[type="checkbox"]:focus-visible+span,input[type="radio"]:focus-visible+span{box-shadow:0 0 0 2px var(--surface-page),0 0 0 4.5px var(--honey-600)}
+::selection{background:var(--honey-300);color:var(--ink-900)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+@media (prefers-contrast:more){:root{--border-subtle:var(--border-strong);--text-muted:var(--ink-700);--text-faint:var(--ink-700)}}

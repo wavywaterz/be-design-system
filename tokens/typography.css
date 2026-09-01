@@ -1,0 +1,9 @@
+:root{
+--font-display:'Instrument Serif',Georgia,'Times New Roman',serif;
+--font-sans:'Instrument Sans',-apple-system,'Segoe UI',Helvetica,sans-serif;
+--font-mono:'Spline Sans Mono',ui-monospace,'SF Mono',Menlo,monospace;
+--text-xs:12px;--text-sm:13px;--text-base:15px;--text-md:17px;--text-lg:21px;--text-xl:26px;--text-2xl:34px;--text-3xl:46px;--text-4xl:62px;--text-5xl:80px;
+--leading-tight:1.02;--leading-snug:1.25;--leading-body:1.55;
+--tracking-display:-0.01em;--tracking-caps:0.08em;
+--weight-regular:400;--weight-medium:500;--weight-semibold:600;
+}

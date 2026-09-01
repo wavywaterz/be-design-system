@@ -1,0 +1,128 @@
+Be — the Creator's Ledger
+============================================================
+
+Everything from first download to daily use, in plain words. The companion sheet for people you share Be with is the Client Guide.
+
+Index
+
+  - What you have
+
+  - The fastest start — no setup
+
+  - Opening the full workshop
+
+  - Installing Be on your Mac
+
+  - Putting Be on phones
+
+  - Using the app, room by room
+
+  - When something goes wrong
+
+  - Plain-words glossary
+
+1 · What you have
+------------------------------------------------------------
+
+Three downloads, each complete in itself:
+
+  - Be App (offline).html — the app itself, sealed into one file. Nothing to install; works with no internet.
+
+  - Be Interactive Demo.html — the marketing site, same single-file idea.
+
+  - Be Design System (zip) — the whole workshop: colors, type, logo files, reusable parts, both sites, and the pwa folder that makes Be installable on phones.
+
+2 · The fastest start — no setup
+------------------------------------------------------------
+
+  - Find Be App (offline).html in your Downloads.
+
+  - Double-click it. It opens in your browser and simply works — offline, private, yours.
+
+  TIP: Your choices (tabs, switches, settled charges) are remembered on that device. Clearing the browser's site data is the one thing that forgets them.
+
+3 · Opening the full workshop
+------------------------------------------------------------
+
+The zip needs a tiny local "server" so pages can find their shared parts. Once:
+
+  - Double-click the zip in Downloads; a folder appears.
+
+  - Open Terminal (Spotlight: press ⌘ Space, type "Terminal").
+
+  - Type cd  (with a space), then drag the unzipped folder onto the Terminal window — it types the path for you. Press Return.
+
+  - Type python3 -m http.server 8000 and press Return. Leave this window open.
+
+  - In your browser, visit:
+
+localhost:8000/ui_kits/app/index.html — the app
+
+localhost:8000/ui_kits/website/index.html — the site
+
+localhost:8000/ — everything else, browsable
+
+  TIP: Done for the day? Click the Terminal window and press Ctrl C to stop it. A "404 File not found" almost always means the server was started in the wrong folder — redo step 3.
+
+4 · Installing Be on your Mac
+------------------------------------------------------------
+
+  - With the server running (section 3), open Chrome and visit localhost:8000/pwa/.
+
+  - Click the small install icon at the right end of the address bar → Install Be.
+
+  - Be now opens from Launchpad and the Dock like any app, offline included.
+
+5 · Putting Be on phones
+------------------------------------------------------------
+
+Phones can't see your Mac's localhost, so the pwa folder needs to live at a web address once:
+
+  - Go to a free static host — e.g. app.netlify.com → "Deploy manually".
+
+  - Drag the pwa folder from the unzipped package onto the page. You receive a link like https://your-name.netlify.app.
+
+  - Android: open that link in Chrome → menu ⋮ → Install app.
+
+  - iPhone: open it in Safari → Share ⬆ → Add to Home Screen.
+
+  - Open it once while online; after that it works without a signal.
+
+  TIP: That link is what you hand to clients — one tap for them, nothing technical. Share the Client Guide along with it.
+
+6 · Using the app, room by room
+------------------------------------------------------------
+
+Today — one piece of biology research each morning, in plain words with its source, and the small act it suggests. "I'll try it" or "Not today" — both are honored answers, and you can change your mind.
+
+When a charge arrives (on Today) — for anger, grief, static. Four gentle steps: acknowledge it, name it, measure it 1–5, then let it move with breath, distance, or a walk. "Still here" is as welcome as "It moved".
+
+Hive — who's alongside you today. No streaks, no rankings; shared acts are invitations, never expectations.
+
+You — the consent room. Everything starts off: the morning note, quiet evenings, what your circle sees. "Larger text" lives here too. Below the switches, "What Be is learning — beside you" shows plain counts (tried, rested, charges met); "Take my counts with me" saves them as a text file; "Ask Be to forget everything" clears the device after one plain question. Be also follows your device's own settings — gentler motion, higher contrast, screen readers, zoom.
+
+7 · When something goes wrong
+------------------------------------------------------------
+
+  - Blank page from the zip — you opened a file directly; use the server (section 3) or the sealed offline app (section 2).
+
+  - "404 File not found" — server started in the wrong folder; redo section 3 step 3.
+
+  - Fonts look plain — the workshop pages fetch fonts online; the sealed app never needs to.
+
+  - Choices forgotten — private/incognito windows don't remember; use a normal window.
+
+  - Old version showing on a phone — close the app fully and reopen; it refreshes itself when online.
+
+8 · Plain-words glossary
+------------------------------------------------------------
+
+  - Sealed file — one HTML file with everything inside; runs by double-click.
+
+  - Local server — a tiny helper that lets pages in a folder find each other; the python3 line above.
+
+  - PWA — a website that installs like an app and works offline.
+
+  - Design system — the shared box of colors, type, parts, and rules everything Be is built from.
+
+  - On-device — stored only on that phone or computer; nothing leaves unless you ask.

@@ -1,0 +1,70 @@
+<!-- @dsCard group="App" viewport="470x800" name="Be app" subtitle="Offline-first daily practice: Today · Hive · You (proposal)" -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light"><meta name="referrer" content="no-referrer"><title>Be — app</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="../website/assets-inline.js"></script>
+<script src="app-data.js"></script>
+<script src="app-store.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;background:var(--nectar-100);padding:20px 0}
+.be-frame{width:390px;height:760px;background:var(--surface-page);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-3);display:flex;flex-direction:column;overflow:hidden;position:relative}
+@media (max-width:480px){body{padding:0;align-items:stretch}.be-frame{width:100vw;height:100vh;height:100dvh;border:none;border-radius:0;box-shadow:none;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}}
+@media (min-width:481px) and (max-height:799px){body{padding:0;align-items:stretch}.be-frame{height:100vh;height:100dvh;border-radius:0;border-top:none;border-bottom:none;box-shadow:none}}
+.be-plain{font-family:var(--font-sans);padding:24px;max-width:390px}
+</style>
+</head><body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#E8A317"></rect><circle cx="50" cy="50" r="34" fill="none" stroke="#201B10" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0.1 7"></circle><text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="#201B10">Be</text></svg></template>
+<div id="root"></div>
+<script type="text/babel" src="Settle.jsx"></script>
+<script type="text/babel" src="Today.jsx"></script>
+<script type="text/babel" src="Hive.jsx"></script>
+<script type="text/babel" src="You.jsx"></script>
+<script type="text/babel">
+const ST=window.BE_STORE;
+const LABELS={today:'Today',hive:'Hive',you:'You'};
+class Boundary extends React.Component{
+constructor(p){super(p);this.state={err:null};}
+static getDerivedStateFromError(e){return {err:e};}
+componentDidCatch(e){console.error('[be]',e);}
+render(){if(!this.state.err)return this.props.children;
+return <div role="alert" className="be-plain"><p style={{fontFamily:'var(--font-display)',fontSize:26,margin:'0 0 8px'}}>That didn't take.</p><p style={{color:'var(--text-muted)',margin:'0 0 18px',lineHeight:1.5}}>Nothing you chose was lost — it's kept on this device. Try again, or close and reopen Be.</p><button onClick={()=>this.setState({err:null})} style={{height:44,padding:'0 22px',borderRadius:999,border:'none',background:'var(--accent)',color:'var(--ink-900)',fontFamily:'inherit',fontSize:15,fontWeight:500,cursor:'pointer'}}>Try again</button></div>;}
+}
+function App(){
+const {Tabs,Toast}=window.BeDesignSystem_748b5f;
+const [state,setState]=React.useState(ST.load);
+const [toast,setToast]=React.useState(null);
+const [unsaved,setUnsaved]=React.useState(false);
+const timer=React.useRef(null);
+React.useEffect(()=>{setUnsaved(!ST.save(state))},[state]);
+const arm=ms=>{clearTimeout(timer.current);timer.current=setTimeout(()=>setToast(null),ms)};
+const notify=t=>{setToast(t);arm(6000)};
+const setTab=id=>setState(s=>({...s,tab:id}));
+const record=e=>setState(s=>({...s,log:[...(s.log||[]),{...e,d:Date.now(),k:ST.day.key()}].slice(-ST.LOG_MAX)}));
+const forget=()=>{setState(ST.forget());notify({tone:'honey',title:'Forgotten.',body:'Everything here is gone, as asked. Welcome back whenever you like.'})};
+const tabs=[{id:'today',label:'Today',tabId:'tab-today',panelId:'panel-today'},{id:'hive',label:'Hive',tabId:'tab-hive',panelId:'panel-hive'},{id:'you',label:'You',tabId:'tab-you',panelId:'panel-you'}];
+return <div data-screen-label="Be app" className="be-frame">
+<header style={{display:'flex',alignItems:'center',gap:10,padding:'16px 18px 10px'}}>
+<img src={window.BE_ASSETS.logo} width="30" height="30" alt="Be"/>
+<span style={{fontFamily:'var(--font-display)',fontSize:22,lineHeight:1}}>Be</span>
+<span style={{marginLeft:'auto',fontFamily:'var(--font-mono)',fontSize:11,color:'var(--text-faint)'}}>yours · wherever you are</span>
+</header>
+<div style={{padding:'0 18px 12px'}}>
+<Tabs size="lg" aria-label="Rooms" items={tabs} value={state.tab} onChange={setTab}/>
+</div>
+{unsaved&&<div role="status" style={{margin:'0 18px 10px',padding:'8px 12px',borderRadius:'var(--radius-md)',background:'var(--surface-tint)',fontSize:12.5,color:'var(--ink-700)'}}>This window can't remember choices (private mode or full storage). Everything still works for now.</div>}
+<div role="tabpanel" id={'panel-'+state.tab} aria-labelledby={'tab-'+state.tab} aria-label={LABELS[state.tab]} tabIndex={0} style={{flex:1,overflowY:'auto',padding:'4px 18px 18px',zoom:state.prefs.bigText?1.18:1}}>
+{state.tab==='today'&&<Today state={state} setState={setState} notify={notify} record={record}/>}
+{state.tab==='hive'&&<Hive state={state}/>}
+{state.tab==='you'&&<You state={state} setState={setState} notify={notify} forget={forget}/>}
+</div>
+{toast&&<div onMouseEnter={()=>clearTimeout(timer.current)} onMouseLeave={()=>arm(2500)} onFocus={()=>clearTimeout(timer.current)} onBlur={()=>arm(2500)} style={{position:'absolute',left:'50%',bottom:16,transform:'translateX(-50%)',zIndex:60,width:'calc(100% - 32px)'}}>
+<Toast tone={toast.tone} title={toast.title} onDismiss={()=>{clearTimeout(timer.current);setToast(null)}} style={{width:'100%',boxSizing:'border-box'}}>{toast.body}</Toast>
+</div>}
+</div>;
+}
+(function mount(n){const ok=window.BeDesignSystem_748b5f&&window.Today&&window.Hive&&window.You&&window.Settle&&window.BE_STORE;
+if(!ok){if(n<100)setTimeout(()=>mount(n+1),100);else document.getElementById('root').innerHTML='<div class="be-plain"><p style="font-family:var(--font-display);font-size:26px;margin:0 0 8px">Be couldn\'t wake up.</p><p style="color:var(--text-muted);margin:0">A part didn\'t load (design-system bundle or a room). Reopen while online, or reinstall from the workshop folder.</p></div>';return;}
+ReactDOM.createRoot(document.getElementById('root')).render(<Boundary><App/></Boundary>);})(0);
+</script></body></html>

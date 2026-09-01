@@ -1,0 +1,7 @@
+:root{
+--ease-out:cubic-bezier(.22,.9,.3,1);/* @kind other */--ease-inout:cubic-bezier(.6,0,.2,1);/* @kind other */--ease-drift:cubic-bezier(.4,0,.2,1);/* @kind other */
+--dur-fast:120ms;/* @kind other */--dur-base:200ms;/* @kind other */--dur-slow:320ms;/* @kind other */--dur-drift:900ms;/* @kind other */
+}
+@keyframes be-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes be-fade-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes be-fade{from{opacity:0}to{opacity:1}}

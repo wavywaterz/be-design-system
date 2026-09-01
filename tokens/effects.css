@@ -1,0 +1,7 @@
+:root{
+--radius-xs:6px;--radius-sm:10px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--radius-pill:999px;
+--shadow-1:0 1px 2px rgba(63,48,10,.06),0 1px 1px rgba(63,48,10,.04);
+--shadow-2:0 2px 6px rgba(63,48,10,.07),0 12px 28px -14px rgba(63,48,10,.2);
+--shadow-3:0 4px 12px rgba(63,48,10,.09),0 28px 56px -18px rgba(63,48,10,.28);
+--border-width:1px;--border-width-strong:1.5px;
+}

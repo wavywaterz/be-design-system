@@ -1,0 +1,33 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Core" subtitle="Button · IconButton · Badge · Tag · Card" -->
+<html><head><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:18px 22px}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const Leaf=()=><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>;
+const X=()=><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>;
+function Demo(){const {Button,IconButton,Badge,Tag,Card}=window.BeDesignSystem_748b5f;return <div style={{display:'flex',flexDirection:'column',gap:16}}>
+<div style={{display:'flex',gap:10,alignItems:'center',flexWrap:'wrap'}}>
+<Button>Start being</Button><Button variant="secondary">Learn more</Button><Button variant="ghost">Skip</Button><Button variant="danger">Remove</Button><Button variant="inverse">Inverse</Button><Button disabled>Disabled</Button>
+</div>
+<div style={{display:'flex',gap:10,alignItems:'center',flexWrap:'wrap'}}>
+<Button size="sm">Small 32</Button><Button size="md" icon={<Leaf/>}>With icon</Button><Button size="lg">Large 48</Button>
+<span style={{width:12}}></span>
+<IconButton label="Solid" variant="solid"><Leaf/></IconButton><IconButton label="Soft"><Leaf/></IconButton><IconButton label="Ghost" variant="ghost"><X/></IconButton><IconButton label="Outline" variant="outline"><Leaf/></IconButton>
+</div>
+<div style={{display:'flex',gap:8,alignItems:'center',flexWrap:'wrap'}}>
+<Badge>New</Badge><Badge tone="meadow">Thriving</Badge><Badge tone="clay">Wilting</Badge><Badge tone="pond">Note</Badge><Badge tone="neutral">Draft</Badge><Badge tone="ink">Queen</Badge>
+<span style={{width:12}}></span>
+<Tag onRemove={()=>{}}>Wildflowers</Tag><Tag onRemove={()=>{}}>Morning</Tag><Tag>Read-only</Tag>
+</div>
+<div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:12}}>
+<Card padding={16}><div style={{fontWeight:600,fontSize:14}}>Default</div><div style={{fontSize:13,color:'var(--text-muted)'}}>border + shadow-2</div></Card>
+<Card variant="tint" padding={16}><div style={{fontWeight:600,fontSize:14}}>Tint</div><div style={{fontSize:13,color:'var(--text-muted)'}}>nectar, flat</div></Card>
+<Card variant="inverse" padding={16}><div style={{fontWeight:600,fontSize:14}}>Inverse</div><div style={{fontSize:13,opacity:.7}}>ink band</div></Card>
+<Card variant="outline" padding={16}><div style={{fontWeight:600,fontSize:14}}>Outline</div><div style={{fontSize:13,color:'var(--text-muted)'}}>1.5px ink</div></Card>
+</div>
+</div>;}
+(function mount(n){if(!window.BeDesignSystem_748b5f){if(n<80)setTimeout(()=>mount(n+1),100);return;}ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);})(0);
+</script></body></html>

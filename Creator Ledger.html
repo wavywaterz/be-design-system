@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Be — Creator's Ledger</title>
+<link rel="stylesheet" href="styles.css">
+<style>doc-page:not(:defined){visibility:hidden}
+body{font-family:var(--font-sans);color:var(--text-body);font-size:12.5pt;line-height:1.6}
+h1{font-family:var(--font-display);font-size:26pt;font-weight:500;margin:0 0 4px}
+h2{font-family:var(--font-display);font-size:16pt;font-weight:600;margin:28px 0 8px;break-after:avoid}
+p{margin:0 0 10px}ol,ul{margin:0 0 10px;padding-left:22px}li{margin:0 0 6px}
+a{color:var(--honey-700)}a:hover{color:var(--ink-900)}
+.sub{color:var(--text-muted);margin:0 0 18px}
+.idx{background:var(--surface-tint);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:14px 18px;break-inside:avoid}
+.idx ol{margin:6px 0 0;columns:2;column-gap:28px}
+code,.k{font-family:var(--font-mono);font-size:10.5pt;background:var(--surface-sunken);border:1px solid var(--border-subtle);border-radius:4px;padding:1px 5px}
+.tip{background:var(--surface-tint);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:10px 14px;margin:10px 0;font-size:11.5pt;color:var(--ink-700);break-inside:avoid}
+.mono{font-family:var(--font-mono);font-size:10pt;color:var(--text-muted)}
+</style></head><body>
+<doc-page>
+<h1>Be — the Creator's Ledger</h1>
+<p class="sub">Everything from first download to daily use, in plain words. The companion sheet for people you share Be with is the <a href="Client Guide.html">Client Guide</a>.</p>
+<div class="idx"><strong>Index</strong>
+<ol>
+<li>What you have</li>
+<li>The fastest start — no setup</li>
+<li>Opening the full workshop</li>
+<li>Installing Be on your Mac</li>
+<li>Putting Be on phones</li>
+<li>Using the app, room by room</li>
+<li>When something goes wrong</li>
+<li>Plain-words glossary</li>
+</ol></div>
+
+<h2>1 · What you have</h2>
+<p>Three downloads, each complete in itself:</p>
+<ul>
+<li><strong>Be App (offline).html</strong> — the app itself, sealed into one file. Nothing to install; works with no internet.</li>
+<li><strong>Be Interactive Demo.html</strong> — the marketing site, same single-file idea.</li>
+<li><strong>Be Design System (zip)</strong> — the whole workshop: colors, type, logo files, reusable parts, both sites, and the <code>pwa</code> folder that makes Be installable on phones.</li>
+</ul>
+
+<h2>2 · The fastest start — no setup</h2>
+<ol>
+<li>Find <strong>Be App (offline).html</strong> in your Downloads.</li>
+<li>Double-click it. It opens in your browser and simply works — offline, private, yours.</li>
+</ol>
+<div class="tip">Your choices (tabs, switches, settled charges) are remembered on that device. Clearing the browser's site data is the one thing that forgets them.</div>
+
+<h2>3 · Opening the full workshop</h2>
+<p>The zip needs a tiny local "server" so pages can find their shared parts. Once:</p>
+<ol>
+<li>Double-click the zip in Downloads; a folder appears.</li>
+<li>Open <strong>Terminal</strong> (Spotlight: press <span class="k">⌘ Space</span>, type "Terminal").</li>
+<li>Type <code>cd </code> (with a space), then <em>drag the unzipped folder onto the Terminal window</em> — it types the path for you. Press Return.</li>
+<li>Type <code>python3 -m http.server 8000</code> and press Return. Leave this window open.</li>
+<li>In your browser, visit:<br>
+<span class="mono">localhost:8000/ui_kits/app/index.html</span> — the app<br>
+<span class="mono">localhost:8000/ui_kits/website/index.html</span> — the site<br>
+<span class="mono">localhost:8000/</span> — everything else, browsable</li>
+</ol>
+<div class="tip">Done for the day? Click the Terminal window and press <span class="k">Ctrl C</span> to stop it. A "404 File not found" almost always means the server was started in the wrong folder — redo step 3.</div>
+
+<h2>4 · Installing Be on your Mac</h2>
+<ol>
+<li>With the server running (section 3), open <strong>Chrome</strong> and visit <span class="mono">localhost:8000/pwa/</span>.</li>
+<li>Click the small install icon at the right end of the address bar → <strong>Install Be</strong>.</li>
+<li>Be now opens from Launchpad and the Dock like any app, offline included.</li>
+</ol>
+
+<h2>5 · Putting Be on phones</h2>
+<p>Phones can't see your Mac's localhost, so the <code>pwa</code> folder needs to live at a web address once:</p>
+<ol>
+<li>Go to a free static host — e.g. <span class="mono">app.netlify.com</span> → "Deploy manually".</li>
+<li>Drag the <code>pwa</code> folder from the unzipped package onto the page. You receive a link like <span class="mono">https://your-name.netlify.app</span>.</li>
+<li><strong>Android:</strong> open that link in Chrome → menu <span class="k">⋮</span> → <strong>Install app</strong>.</li>
+<li><strong>iPhone:</strong> open it in Safari → Share <span class="k">⬆</span> → <strong>Add to Home Screen</strong>.</li>
+<li>Open it once while online; after that it works without a signal.</li>
+</ol>
+<div class="tip">That link is what you hand to clients — one tap for them, nothing technical. Share the <a href="Client Guide.html">Client Guide</a> along with it.</div>
+
+<h2>6 · Using the app, room by room</h2>
+<p><strong>Today</strong> — one piece of biology research each morning, in plain words with its source, the small act it suggests, and a "why we trust it" line — caveats said out loud. "I'll try it" or "Not today" — both are honored answers, and you can change your mind.</p>
+<p><strong>When a charge arrives</strong> (on Today) — for anger, grief, static. Four gentle steps: acknowledge it, name it, measure it 1–5, then let it move with breath, distance, or a walk. "Still here" is as welcome as "It moved".</p>
+<p><strong>Hive</strong> — who's alongside you today. No streaks, no rankings; shared acts are invitations, never expectations.</p>
+<p><strong>You</strong> — the consent room. Everything starts off: the morning note, quiet evenings, what your circle sees. "Larger text" lives here too. Below the switches, "What Be is learning — beside you" shows plain counts (tried, rested, charges met); "Take my counts with me" saves them as a text file; "Ask Be to forget everything" clears the device after one plain question. Be also follows your device's own settings — gentler motion, higher contrast, screen readers, zoom.</p>
+
+<h2>7 · When something goes wrong</h2>
+<ul>
+<li><strong>Blank page from the zip</strong> — you opened a file directly; use the server (section 3) or the sealed offline app (section 2).</li>
+<li><strong>"404 File not found"</strong> — server started in the wrong folder; redo section 3 step 3.</li>
+<li><strong>Fonts look plain</strong> — the workshop pages fetch fonts online; the sealed app never needs to.</li>
+<li><strong>Choices forgotten</strong> — private/incognito windows don't remember; use a normal window.</li>
+<li><strong>Old version showing on a phone</strong> — close the app fully and reopen; it refreshes itself when online.</li>
+</ul>
+
+<h2>8 · Plain-words glossary</h2>
+<ul>
+<li><strong>Sealed file</strong> — one HTML file with everything inside; runs by double-click.</li>
+<li><strong>Local server</strong> — a tiny helper that lets pages in a folder find each other; the <code>python3</code> line above.</li>
+<li><strong>PWA</strong> — a website that installs like an app and works offline.</li>
+<li><strong>Design system</strong> — the shared box of colors, type, parts, and rules everything Be is built from.</li>
+<li><strong>On-device</strong> — stored only on that phone or computer; nothing leaves unless you ask.</li>
+</ul>
+</doc-page>
+<script src="doc-page.js"></script>
+</body></html>
